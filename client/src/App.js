@@ -7,22 +7,22 @@ function App() {
   const [hermesTokenResponse, setHermesTokenResponse] = useState({});
 
   const fetchHermesToken = useCallback(async () => {
-    const options = { mode: 'cors' }
+    const options = { mode: 'cors' };
 
     if (isAuthenticated) {
-      const token = await getAccessTokenSilently()
-      const headers = { 'Authorization': `Bearer ${token}` }
-      options.headers = headers
+      const token = await getAccessTokenSilently();
+      const headers = { 'Authorization': `Bearer ${token}` };
+      options.headers = headers;
     }
     
-    const response = await fetch('http://localhost:5000', options)
-    const body = await response.json() 
-    setHermesTokenResponse(body)
-  }, [getAccessTokenSilently, isAuthenticated])
+    const response = await fetch('http://localhost:5000', options);
+    const body = await response.json();
+    setHermesTokenResponse(body);
+  }, [getAccessTokenSilently, isAuthenticated]);
 
   useEffect(() => {
-    fetchHermesToken()
-  }, [isAuthenticated, fetchHermesToken])
+    fetchHermesToken();
+  }, [isAuthenticated, fetchHermesToken]);
 
   return (
     <div>
@@ -31,6 +31,7 @@ function App() {
       </p>
       <pre>{JSON.stringify(user, null, 2)}</pre>
       <p><a href="http://localhost:5000/authorize" target="_blank" rel="noopener noreferrer">Authorize Hermes</a></p>
+      <p><a href="http://localhost:5000/logout" target="_blank" rel="noopener noreferrer">Logout Hermes</a></p>
       <pre>{JSON.stringify(hermesTokenResponse, null, 2)}</pre>
       <button onClick={fetchHermesToken}>Reload Hermes Token</button>
     </div>
