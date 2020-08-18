@@ -31,7 +31,7 @@ function App() {
       </p>
       <pre>{JSON.stringify(user, null, 2)}</pre>
       <p><a href="http://localhost:5000/authorize" target="_blank" rel="noopener noreferrer">Authorize Hermes</a></p>
-      <p><a href="http://localhost:5000/logout" target="_blank" rel="noopener noreferrer">Logout Hermes</a></p>
+      <p>clientと異なるアカウントでhermesにログインした場合、一旦clientをログアウトすると再紐付けできるようになります。</p>
       <pre>{JSON.stringify(hermesTokenResponse, null, 2)}</pre>
       <button onClick={fetchHermesToken}>Reload Hermes Token</button>
     </div>

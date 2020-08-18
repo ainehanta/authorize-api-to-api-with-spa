@@ -97,10 +97,6 @@ def auth_callback():
         tokens[token.get('sub')] = token
 
     return 'OK'
-
-@app.route("/logout")
-def logout():
-    return redirect(f'https://{os.environ.get("AUTH0_DOMAIN")}/v2/logout')
-
+    
 if __name__ == "__main__":
     app.run()
